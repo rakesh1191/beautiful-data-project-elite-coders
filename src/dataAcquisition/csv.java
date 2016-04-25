@@ -14,11 +14,10 @@ public class csv {
   public static void main(String[] args) {
 
 	csv obj = new csv();
-	obj.run();
-
+	obj.mungee();
   }
 
-  public void run() {
+  public void mungee() {
 
 	String csvFile = "C:\\Users\\Pritam\\Downloads\\p.csv";
 	BufferedReader br = null;
@@ -33,20 +32,17 @@ public class csv {
 		
 		br = new BufferedReader(new FileReader(csvFile));
 		while ((line = br.readLine()) != null) {
-
 			// use comma as separator
 			String[] s = line.split(cvsSplitBy);
-
-			ent.add(new model(s[0],s[1],s[2],s[3]));
-
+			if(s[2]!=null&&s[3]!=null){
+				ent.add(new model(s[0],s[1],s[2],s[3]));
+			}
 		}
-
 		//loop map
 		for (model entry : ent) {
 
 			System.out.println("Country [id= " + entry.getId() + " , name="
 				+ entry.getMovid() + "rating"+entry.getRating()+"ts"+entry.getTs()+"]");
-
 		}
 
 	} catch (FileNotFoundException e) {
