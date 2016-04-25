@@ -28,11 +28,11 @@ public class newTwi{
 
 		twitter.setOAuthAccessToken(accessToken);
 		//-------------------------
-		Query query = new Query("#pritamaher");
+		Query query = new Query("#newmovies");
 		//
 		
 		//
-		  int numberOfTweets = 100;
+		  int numberOfTweets = 100000000;
 		  long lastID = Long.MAX_VALUE;
 		  ArrayList<Status> tweets = new ArrayList<Status>();
 		  while (tweets.size () < numberOfTweets) {
@@ -46,12 +46,13 @@ public class newTwi{
 		      System.out.println("Gathered " + tweets.size() + " tweets");
 		      for (Status t: tweets) 
 		        if(t.getId() < lastID) lastID = t.getId();
-
+		      
 		    }
-
 		    catch (TwitterException te) {
 		    	System.out.println("Couldn't connect: " + te);
-		    	 //Thread.sleep(120000); 	
+		    	 //Thread.sleep(120000);
+		    	Thread.sleep(te.getRateLimitStatus()
+	                    .getSecondsUntilReset() * 1000);
 		    }; 
 		    query.setMaxId(lastID-1);
 		   // Thread.sleep(120000); 	
