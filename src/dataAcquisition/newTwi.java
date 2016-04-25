@@ -32,7 +32,7 @@ public class newTwi{
 		//
 		
 		//
-		  int numberOfTweets = 100000000;
+		  int numberOfTweets = 1000;
 		  long lastID = Long.MAX_VALUE;
 		  ArrayList<Status> tweets = new ArrayList<Status>();
 		  while (tweets.size () < numberOfTweets) {
