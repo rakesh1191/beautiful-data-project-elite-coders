@@ -32,11 +32,11 @@ public class facebookCollector {
 		 // Generate facebook instance.
 	    Facebook facebook = new FacebookFactory().getInstance();
 	    // Use default values for oauth app id.
-	    facebook.setOAuthAppId("","");
+	    facebook.setOAuthAppId("1054996377907204","cf33e5a1caacddf0c821e5c3769dcd8d");
 	    // Get an access token from: 
 	    // https://developers.facebook.com/tools/explorer
 	    // Copy and paste it below.
-	    String accessTokenString = "";
+	    String accessTokenString = "EAACEdEose0cBABDBiN13xGIoLbvOFldYAFB6M6VRgzBb5KcKh4O4r1k9QQutA5Dj1gJqBq0TnNoPAYZBueBIwLlCIAm86FHT78ZBeSZA15g88NlKOmMA1x7Kv5VmHbjSt2QaVLxwTcs4loHnbUKjs7SZBrIK9gWrseY612rpZCwZDZD";
 	    AccessToken at = new AccessToken(accessTokenString);
 	    // Set access token.
 	    facebook.setOAuthAccessToken(at);
@@ -53,7 +53,8 @@ public class facebookCollector {
 	    	
 	    ResponseList<Post> feeds = facebook.getFeed("15925638948",
 	            new Reading().limit(100).since("Mon May 04 09:51:52 CDT 2014"));
-	    	
+	    Comment comment =facebook.getComment("1", new Reading().since("Mon May 04 09:51:52 CDT 2014"));
+	    String msg= comment.getMessage();
 	        // For all 25 feeds...
 	        for (int i = 0; i < feeds.size(); i++) {
 	           try {			
@@ -91,8 +92,8 @@ public class facebookCollector {
 				}
 	           }
 		}catch(Exception e){
-			Thread.sleep(600000);
-			list.addAll(getdata());
+			//Thread.sleep(600000);
+			//list.addAll(getdata());
 			
 		}
 		 System.out.println("no of rows:-"+list.size());
